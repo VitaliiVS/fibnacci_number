@@ -25,11 +25,11 @@ fn fib(number: i32) {
     let mut message: String = String::from("Sequence: ");
     
     if number == current {
-       return println!("Your num is: {prev}")
+        print_current_number(prev)
     }
 
     if number <= 3 {
-        return println!("Your num is: {current}")
+        print_current_number(current)
     }
 
     while i <= number {
@@ -38,7 +38,7 @@ fn fib(number: i32) {
         if i <= 4 {
             message = message + &prev.to_string() + end;
 
-            println!("Current num in sequence: {prev}");
+            print_current_number(prev)
         }
 
         sum = prev + current;
@@ -48,10 +48,14 @@ fn fib(number: i32) {
 
         message = message + &current.to_string() + end;
 
-        println!("Current num in sequence: {current}")
+        print_current_number(current)
     }
 
     println!("{message}");
 
-    return println!("Your num is: {sum}")
+    return println!("Your number is: {sum}")
+}
+
+fn print_current_number(num: i32) {
+    println!("Current number in sequence: {}", num)
 }
