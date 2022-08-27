@@ -1,19 +1,26 @@
 use std::io;
 
 fn main() {
-    let mut num = String::new();
-
     println!("Enter a number:");
 
-    io::stdin()
-        .read_line(&mut num)
-        .expect("Error");
+    loop {
+        let mut num = String::new();
 
-    let num: i32 = num.trim()
-        .parse()
-        .expect("Enter a number");
-
-    fib(num);
+        io::stdin()
+            .read_line(&mut num)
+            .expect("Error");
+        
+        let num: i32 = match num.trim().parse() {
+            Ok(num) => num,
+            Err(error) => {
+                println!("{error}, please enter a number:");
+                continue;
+            }
+        };
+    
+        fib(num);
+        break;
+    }
 }
 
 fn fib(number: i32) {
