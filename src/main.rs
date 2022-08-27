@@ -3,6 +3,7 @@ mod fib;
 
 use std::io;
 use crate::fib::fib;
+use crate::utils::capitalize_first_letter;
 
 fn main() {
     println!("Enter a number:");
@@ -17,7 +18,8 @@ fn main() {
         let num: u64 = match num.trim().parse() {
             Ok(num) => num,
             Err(error) => {
-                println!("{error}, please enter a number:");
+                let err: String = capitalize_first_letter(&error.to_string());
+                println!("{}, please enter a number:", err);
                 continue;
             }
         };
